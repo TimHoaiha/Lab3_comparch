@@ -1,15 +1,15 @@
-module decoder5to32 (en,I0,I1,I2,I3,I4,ou0,ou1,ou2,ou3,ou4,ou5,ou6,ou7,ou8,ou9,ou10,ou11,ou12,ou13,ou14,ou15,ou16,ou17,ou18,ou19,ou20,ou21,ou22,ou23,ou24,ou25,ou26,ou27,ou28,ou29,ou30,ou31);
+module decoder5to32 (en, I,ou0,ou1,ou2,ou3,ou4,ou5,ou6,ou7,ou8,ou9,ou10,ou11,ou12,ou13,ou14,ou15,ou16,ou17,ou18,ou19,ou20,ou21,ou22,ou23,ou24,ou25,ou26,ou27,ou28,ou29,ou30,ou31);
 
-input I0,I1,I2,I3,I4;
+	input [4:0] I;
 input en;
 
 output reg ou0,ou1,ou2,ou3,ou4,ou5,ou6,ou7,ou8,ou9,ou10,ou11,ou12,ou13,ou14,ou15,ou16,ou17,ou18,ou19,ou20,ou21,ou22,ou23,ou24,ou25,ou26,ou27,ou28,ou29,ou30,ou31;
  
-		always @ (I0 or I1 or I2 or I3 or I4 or en) begin
+	always @ (I or en) begin
 			if (en==1'b1) begin
 		
 		 
-				case ({I4,I3,I2,I1,I0})
+				case (I)
 			
 					5'b00000 :ou0=1;
 					5'b00001 :ou1=1;
