@@ -11,11 +11,11 @@ output reg [31:0] out;
 
 always @(posedge clk or posedge reset)
 
-if(load == 1)
-out <= inReg;
-else if(reset == 1)
+if(reset == 1)
 out <= 32'b0;
-
+else if(load == 1)
+out <= inReg;
+	
 endmodule 
 
 
