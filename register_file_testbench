@@ -1,0 +1,43 @@
+module register_file_tb ();
+
+reg [31:0] I; 
+reg clk, reset, writeEn;
+reg [4:0] rs1, rs2, rd;
+
+wire [31:0] out, out1;
+
+register_file dut(.I(I), .clk(clk), .reset(reset), .rs1(rs1), .rs2(rs2), .rd(rd), .writeEn(writeEn), .out(out), .out1(out1));
+
+
+initial begin
+clk = 0;
+
+
+forever
+ #10 clk = ~clk;
+end
+
+
+initial begin
+
+writeEn = 1'b1;
+reset <= 1;
+#20;
+reset <= 0;
+
+
+rd= 5'd31;
+I = 32'd5;
+#20;
+
+
+writeEn = 1'b0;
+
+rs1 = 5'd31;
+rs2 = 5'd14;
+
+#60;
+
+end
+
+endmodule
